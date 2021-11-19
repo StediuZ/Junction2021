@@ -56,3 +56,10 @@ geckodriver.log
 docs/source/changelog.md
 
 .jupyter_releaser_checkout
+
+site_[1-4].zip
+audio_data.zip
+starter_kit.zip
+
+site_[1-4]/
+audio_data/

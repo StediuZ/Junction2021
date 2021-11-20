@@ -15,7 +15,7 @@ const options = {
     width: 5270/uiscale
   },
   title: {
-    text: "Flow"
+    text: "People flow"
   },
   series: [{
     data: mockdata,

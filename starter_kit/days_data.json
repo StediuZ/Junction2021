@@ -1,0 +1,14 @@
+{
+    "day":"date",
+    "time":[
+            {
+                "time":"datetime",
+                "devices": [
+                    {
+                        "device_id":"int",
+                        "num_of_events":"int"
+                    }
+                ]
+            }
+    ]
+}

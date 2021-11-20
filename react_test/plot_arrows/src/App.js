@@ -1,6 +1,7 @@
 import React, {Component} from "react";
 import './App.css';
 import Chart from './Chart'
+import Slider from './Slider'
 
 
 class App extends Component {
@@ -11,10 +12,11 @@ class App extends Component {
     return (
       <div >
         <Chart/>
+        <Slider/>
       </div>
     );
   }
 
 }
 
-export default App;
+export default App; 

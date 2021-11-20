@@ -4,7 +4,6 @@ import Highcharts from 'highcharts'
 import HighchartsReact from 'highcharts-react-official'
 import highchartsVector from 'highcharts/modules/vector'
 import { mockdata } from "./data"
-// EXPLICITLY IMPORT MODULE
 highchartsVector(Highcharts)
 
 var uiscale = 4

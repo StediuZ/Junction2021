@@ -8,7 +8,7 @@ function valuetext(value) {
   
   export default function DiscreteSlider() {
     return (
-      <Box sx={{ width: 800 }}>
+      <Box sx={{mr:4, ml:4}}>
         <Slider
           aria-label="Hour"
           defaultValue={0}

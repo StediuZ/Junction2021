@@ -26,8 +26,10 @@ def fetch_data(site, timestamp)
     data = {timestamp_min:{}}                              
     for i in hour:
         data[timestamp_min][i]={}
-        if(hours[x]==i):
-            for x in range(0,len(df_events_test)):
+
+    for i in hour:
+        for x in range(0,len(df_events_test)):
+            if(hours[x]==i):
                 if(device[x] in data[timestamp_min][i]):
                     data[timestamp_min][i][device[x]]+=1
                 else:

@@ -2,17 +2,15 @@ import React, {Component} from "react";
 import Box from '@mui/material/Box';
 import Slider from '@mui/material/Slider';
 
-function valuetext(value) {
-    return `${value}°C`;
-  }
+
   
-  export default function DiscreteSlider() {
+  export default function DiscreteSlider(props) {
     return (
       <Box sx={{mr:4, ml:4}}>
         <Slider
           aria-label="Hour"
-          defaultValue={0}
-          getAriaValueText={valuetext}
+          value={props.value}
+          onChangeCommitted={props.onChange}
           valueLabelDisplay="auto"
           step={1}
           marks

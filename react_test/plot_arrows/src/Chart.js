@@ -8,14 +8,18 @@ highchartsVector(Highcharts)
 
 var uiscale = 4
 
+function calc_height () {
+    var height_ratio = 2636/5270
+    return height_ratio*100 + "%"
+}
+
 const options = {
   chart: {
     plotBackgroundImage: "http://127.0.0.1:8080/site_1.png",
-    height: 2635/uiscale,
-    width: 5270/uiscale
+    height: calc_height
   },
   title: {
-    text: "Flow"
+    text: ""
   },
   series: [{
     data: mockdata,

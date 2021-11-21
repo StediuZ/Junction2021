@@ -1,52 +1,60 @@
 import background from './img/site_1.png';
-import React, {Component} from "react";
+import React, {Component, useState, useEffect} from "react";
 import Highcharts from 'highcharts'
+import Box from '@mui/material/Box';
 import HighchartsReact from 'highcharts-react-official'
 import highchartsVector from 'highcharts/modules/vector'
-import { mockdata } from "./data"
+import h337 from 'heatmap.js'
 highchartsVector(Highcharts)
 
-var uiscale = 4
 
-function calc_height () {
-    var height_ratio = 2636/5270
-    return height_ratio*100 + "%"
-}
 
-const options = {
-  chart: {
-    plotBackgroundImage: "http://127.0.0.1:8080/site_1.png",
-    height: calc_height
-  },
-  title: {
-    text: ""
-  },
-  series: [{
-    data: mockdata,
-    type: "vector"
-  }],
-  xAxis: {
-    visible: false
-  },
-  yAxis: {
-    visible: false
-  }
-}
+function Chart(props) {
+    useEffect(() => {
+            console.log("heatmap!")
+            var image = document.querySelectorAll('input[type=image]')
+            console.log(image)
+            var heatmapInstance = h337.create({
+                // only container is required, the rest will be defaults
+                container: document.querySelector('.chart'),
+                opacity: 0.1
+            });
+            // now generate some random data
+            var points = [];
+            var max = 10;
+            var width = 840;
+            var height = 400;
+            var len = 200;
+        
+            while (len--) {
+                var val = Math.floor(Math.random()*100);
+                max = Math.max(max, val);
+                var point = {
+                    x: Math.floor(Math.random()*width),
+                    y: Math.floor(Math.random()*height),
+                    value: val
+                };
+                points.push(point);
 
-class Chart extends Component {
-    constructor(props) {
-      super(props);
-    }
-    render() {
-      return (
-        <div >
-          <HighchartsReact
+            }
+            // heatmap data format
+            var data = {
+                max: max,
+                data: points
+            };
+            // if you have a set of datapoints always use setData instead of addData
+            // for data initialization
+            heatmapInstance.setData(data);
+     })
+
+    return (
+        <Box class="chart" >
+            <HighchartsReact
             highcharts={Highcharts}
-            options={options}
-          />
-        </div>
-      );
-    }
+            options={props.options}
+            />
+        </Box>
+    );
   
   }
   

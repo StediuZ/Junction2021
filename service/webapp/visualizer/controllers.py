@@ -1,5 +1,6 @@
 from flask import render_template, Blueprint, flash, redirect, url_for, current_app, abort, request, send_from_directory
 from .models import TimeNow
+from PIL import Image
 import base64, json, os, random
 import pandas as pd
 import numpy as np
@@ -62,7 +63,7 @@ def heatdate(dateSelected, siteSelected):
 
     df_events_test = df_events[df_events.timestamp.dt.date.astype(str) == timestamp].copy()
 
-    hour = ['0','1','2','3','4','5','6','7','8','9','10','11','12','13','14','15','16','17','18','19','20','21','22','23']#list(df_events_test['timestamp'].dt.hour.astype(str))
+    hour = ['0','1','2','3','4','5','6','7','8','9','10','11','12','13','14','15','16','17','18','19','20','21','22','23']
     hours = list(df_events_test['timestamp'].dt.hour.astype(str))
     device = list(df_events_test['deviceid'])
 
@@ -87,6 +88,16 @@ def heatdate(dateSelected, siteSelected):
 def sitepicture(num):
     siteName = 'site_' + str(num) + '.png'
     return send_from_directory('static', siteName)
+
+
+@visualizer_blueprint.route('/sitemeta/<int:num>')
+def sitemeta(num):
+    sitePath = 'webapp/static/site_' + str(num) + '.png'
+    with Image.open(sitePath) as img:
+        width, height = img.size
+    reso = str(round(100*height/width)) + '%'
+    result = json.dumps({'reso':reso, 'width':width, 'height':height})
+    return result
 
 
 @visualizer_blueprint.route('/time')

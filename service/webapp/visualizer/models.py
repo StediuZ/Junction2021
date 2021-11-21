@@ -1,5 +1,6 @@
 from datetime import datetime
 
+
 class TimeNow():
     def __repr__(self):
         now = datetime.now()

@@ -8,17 +8,17 @@
 </head>
 <body>
     <center>
-        <div class="bg-light rounded p-2 text-primary border border-dark" style="width: 500px;">
+        <div class="bg-light rounded p-2 text-primary border border-dark" style="width: 250px;">
             <h1><a class="text-primary" href="{{ url_for('.timenow') }}">Visualizer</a></h1>
-            <p>This is our great Visualizer!</p>
+            <p>This is our great backend!</p>
         </div>
     </center>
     <br>
     <div>
         <center>
-            <label for="date" class="text-primary">Date:</label>
+            <label for="date" class="text-primary">Fetch data from:</label>
             <form method="POST">
-                <input type="date" name="date">
+                <input type="date" name="date" id:"date">
                 <button type="submit" class="btn btn-light text-primary border border-dark">OK</button>
             </form>
         </center>
